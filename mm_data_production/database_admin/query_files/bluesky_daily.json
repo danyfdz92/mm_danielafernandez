@@ -1,0 +1,14 @@
+[
+    {
+        "query": "CREATE TABLE IF NOT EXISTS bluesky_posts ( text_post TEXT, created_at TIMESTAMP, author TEXT, uri TEXT PRIMARY KEY, has_images BOOLEAN, reply_to TEXT )",
+        "params": []
+    },
+    {
+        "query": "INSERT INTO bluesky_posts (text_post, created_at, author, uri, has_images, reply_to) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(uri) DO UPDATE SET text_post = excluded.text_post, created_at = excluded.created_at, author = excluded.author, has_images = excluded.has_images, reply_to = excluded.reply_to;",
+        "params": []
+    },
+    {
+        "query": "SELECT * FROM bluesky_posts",
+        "params": []
+    }
+]
